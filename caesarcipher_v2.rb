@@ -2,12 +2,12 @@
 
 def cipher_hash(shift)
     alphabet = ("a".."z").to_a
-    letter_index = alphabet.index(letter)
     alphabet_shift = Array.new
     alphabet.each { |letter|
-        alphabet_shift << alphabet[letter_index - shift]
+        alphabet_shift << alphabet[alphabet.index(letter) - shift]
     }
-    cipher = Hash(alphabet.zip(alphabet_shift)) #creates hash from array of array pairs
+    zip = alphabet.zip(alphabet_shift)
+    cipher = Hash[zip] #creates hash from array of array pairs
     return cipher
 end
 
