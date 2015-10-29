@@ -1,16 +1,32 @@
 def bubble_sort(array)
-    for i in 0..array.length - 1 do
-        p = array[i - 1]
-        n = array[i]
-        if p > n
-            p, n = n, p
+    swap_count = 0
+    for i in 0..(array.length - 2) do
+        if array[i] > array[i + 1]
+            array[i], array[i + 1] = array[i + 1], array[i]
+            swap_count +=1
         end
     end
-    return array
+    if swap_count > 0
+        bubble_sort(array)
+    else
+        array
+    end
 end
             
-                
-                
 x = Array.new
-4.times { x << rand(10) }
-bubble_sort(x)
+5.times { x << rand(100) }
+
+puts x 
+puts bubble_sort(x)
+
+#testing
+
+10.times {
+    m = bubble_sort(x)
+    n = x.sort
+    if m != n
+        puts "fail"
+    else
+        puts "win"
+    end
+        }
